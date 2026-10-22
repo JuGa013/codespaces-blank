@@ -14,10 +14,6 @@ int main() {
     printf("A-t-il l'autorisation de l'assurance ? (0 = Non, 1 = Oui) : ");
     scanf("%d", &a_autorisation);
 
-    // 2. Vérification des conditions requises
-    // - Au moins 5 ans de permis (annees_permis >= 5)
-    // - Jamais suspendu (est_suspendu == 0)
-    // - Autorisation de l'assurance obtenue (a_autorisation == 1)
     if (annees_permis >= 5 && est_suspendu == 0 && a_autorisation == 1) {
         printf("\nResultat : La personne est un accompagnateur VALIDE.\n");
     } else {
