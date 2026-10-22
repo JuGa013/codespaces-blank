@@ -14,10 +14,10 @@ int main() {
     scanf("%d", &nombre_visiteurs);
 
     for (i = 1; i <= nombre_visiteurs; i++) {      
-        printf("Entrez l'age du visiteur %d : ", i);
+        printf("Entrez l'âge du visiteur %d : ", i);
         scanf("%d", &age);
 
-        printf("Le visiteur est-il etudiant ? (0 = Non, 1 = Oui) : ");
+        printf("Le visiteur est-il étudiant ? (0 = Non, 1 = Oui) : ");
         scanf("%d", &est_etudiant);
 
         prix_entree = 12.0;
@@ -36,7 +36,7 @@ int main() {
         prix_total = prix_total + prix_entree;
     }
 
-    printf("Prix total des entrees : %.2f EUR\n", prix_total);
+    printf("Prix total des entrées : %.2f EUR\n", prix_total);
     printf("Nombre de cadeaux à distribuer : %d\n", nb_cadeaux);
 
     return 0;

@@ -36,8 +36,8 @@ void calcul_total(float montant_total, int promo_est_active) {
     }
 
     printf("Montant initial : %.2f EUR\n", montant_total);
-    printf("Montant de la reduction : %.2f EUR\n", reduction);
-    printf("Montant total paye : %.2f EUR\n", montant_final);
+    printf("Montant de la réduction : %.2f EUR\n", reduction);
+    printf("Montant total payé : %.2f EUR\n", montant_final);
 }
 
 int main() {

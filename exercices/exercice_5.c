@@ -30,12 +30,12 @@ int main() {
     score_risque = calcul_score_risque();
 
     if (montant_achat > 1000.0 || strcmp(pays_achat, "France") != 0 || score_risque > 80) {
-        printf("ALERTE : Le systeme anti-fraude 3D Secure est DECLENCHE !\n");
+        printf("ALERTE : Le système anti-fraude 3D Secure est déclenché !\n");
     }
 
     // inversion De Morgan
     // if (montant_achat <= 1000.0 && strcmp(pays_achat, "France") == 0 && score_risque <= 80) {
-    //     printf("Condition de securite valide : Pas de declenchement du 3D Secure.\n");
+    //     printf("Pas de déclenchement du 3D Secure.\n");
     // }
 
     return 0;
