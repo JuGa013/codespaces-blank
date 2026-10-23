@@ -1,0 +1,18 @@
+FONCTION division(a, b, quotient REF, reste REF) 
+    quotient = a / b
+    reste = a % b
+FINFONCTION
+
+DEBUT 
+    ASSIGNER quotient
+    ASSIGNER reste
+
+    ECRIRE "Saisissez a" 
+    LIRE a 
+    ECRIRE "Saisissez b"
+    LIRE b 
+
+    APPELLE division(a, b, quotient, reste)
+    ECRIRE "La partie entière est <quotient>"
+    ECRIRE "Le reste est <reste>"
+FIN

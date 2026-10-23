@@ -1,0 +1,43 @@
+DEFINI CONVERSION_KM_MILES = 1.609344
+
+FONCTION km_en_miles(km)
+    RETOURNE km / CONVERSION_KM_MILES
+FINFONCTION
+
+FONCTION miles_en_km(miles)
+    RETOURNE miles * CONVERSION_KM_MILES
+FINFONCTION
+
+FONCTION table_conversion()
+    ECRIRE "Miles  -  Km"
+    POUR miles allant de 5 à 30
+        ECRIRE "<miles>  -  <miles_en_km(miles)>"
+        miles = miles + 5
+    FINPOUR
+FINFONCTION
+
+DEBUT
+    ECRIRE "Que voulez vous faire ? 1 - Convertir | 2 - Afficher la table de conversion"
+    LIRE choix
+
+    SI choix == 1
+        ECRIRE "Saisir la distance à Convertir"
+        LIRE distance
+        ECRIRE "Dans quelle unité est cette distance ? (km | miles)"
+        LIRE unite
+
+        ASSIGNER conversion
+        
+        SELON (unite)
+            cas "km"
+                conversion = APPELLE km_en_miles(distance)
+            cas "miles"
+                conversion = APPELLE miles_en_km(distance)
+            defaut
+                ECRIRE "Unité non reconnue, veuillez choisir entre km et miles"
+        FINSELON
+
+        ECRIRE "Après conversion la distance est de <conversion>"
+    SINON
+        APPELLE table_conversion()
+FIN
