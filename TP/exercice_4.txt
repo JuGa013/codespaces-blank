@@ -1,0 +1,57 @@
+FONCTION initialiser(cailloux REF, premier_joueur REF)
+    ECRIRE "Avec combien de cailloux allons nous jouer ?"
+    LIRE nb_cailloux
+    cailloux = nb_cailloux
+
+    ECRIRE "Qui commence la partie ? (0 - Humain | 1 - Machine)
+    LIRE choix
+    premier_joueur = choix
+FINFONCTION
+
+FONCTION utilisateur_joue(cailloux REF)
+    FAIRE 
+        ECRIRE "Combien de cailloux voulez-vous retirer ?"
+        LIRE pris
+    TANTQUE pris < 1 OU pris > 3 OU pris > cailloux
+        ECRIRE "Coup invalide. Choisissez entre 1 et 3 cailloux (et pas plus qu'il n'en reste) :"
+    FINTANTQUE
+
+    cailloux = cailloux - pris
+FINFONCTION
+
+FONCTION machine_joue(cailloux REF)
+    ASSIGNER pris = APPELLE ALEATOIRE(1, 3)
+    
+    SI pris > cailloux
+        pris = cailloux
+    FINSI
+    
+    ECRIRE "Tour de la machine. Elle retire <pris> cailloux."
+    cailloux = cailloux - pris
+FINFONCTION
+
+DEBUT
+    ASSIGNE cailloux
+    ASSIGNE joueur_actuel
+
+    APPELLE initialiser(cailloux, joueur_actuel)
+
+    TANTQUE cailloux > 0
+        ECRIRE "Il reste <cailloux> cailloux."
+
+        SI joueur_actuel == 0
+            APPELLE utilisateur_joue(cailloux)
+            SI cailloux == 0
+                ECRIRE "L'humain a pris le dernier caillou et a perdu !"
+            FINSI
+            joueur_actuel = 1
+        SINON
+            APPELLE machine_joue(cailloux)
+            SI cailloux == 0
+                ECRIRE "La machine a pris le dernier caillou et a perdu !"
+            FINSI
+            joueur_actuel = 0
+        FINSI
+        
+    FINTANTQUE
+FIN

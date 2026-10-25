@@ -1,0 +1,69 @@
+FONCTION afficher_tetes_pattes(moutons, dindons)
+    ASSIGNER tetes = moutons + dindons
+    ASSIGNER pattes = (moutons * 4) + (dindons * 2)
+    ECRIRE "Si moutons = <moutons> et dindons = <dindons> alors pattes = <moutons> * 4 + <dindons> * 2 = <pattes> et tetes = <moutons> + <dindons> = <tetes>."
+FINFONCTION
+
+FONCTION calculer_tetes_pattes(moutons, dindons, tetes REF, pattes REF)
+    tetes = moutons + dindons
+    pattes = moutons * 4 + dindons * 2
+FINFONCTION
+
+FONCTION verifie_declaration(tetes, pattes, message_erreur REF)
+    ASSIGNER moutons
+    ASSIGNER dindons
+    ASSIGNER tetes_verif
+    ASSIGNER pattes_verif
+    ASSIGNER calcul_valide
+
+    SI pattes % 2 != 0
+        message_erreur = "Le nombre total de pattes doit etre pair."
+        RETOURNE FAUX
+    FINSI
+    
+    SI pattes < tetes * 2
+        message_erreur = "Pas assez de pattes ! Même si tout etait dindons, il faudrait plus de pattes."
+        RETOURNE FAUX
+    FINSI
+    
+    SI pattes > tetes * 4
+        message_erreur = "Trop de pattes ! Même si tout etait moutons, il ne pourrait pas y en avoir autant."
+        RETOURNE FAUX
+    FINSI
+
+    moutons = (pattes - (tetes * 2)) / 2
+    dindons = tetes - moutons
+    APPELLE calculer_tetes_pattes(moutons, dindons, tetes_verif, pattes_verif)
+
+    calcul_valide = (tetes_verif == tetes) ET (pattes_verif == pattes)
+
+    SI calcul_valide est FAUX
+        message_erreur = "Le nombre de pattes et de tetes est incohérent"
+    FINSI
+
+    RETOURNE calcul_valide
+FINFONCTION
+
+DEBUT
+    ASSIGNER moutons
+    ASSIGNER dindons
+    ASSIGNER message_erreur
+
+    ECRIRE "Combien de tetes souhaitez vous déclarer ?"
+    LIRE tetes_declarees
+
+    ECRIRE "Combien de pattes souhaitez vous déclarer ?"
+    LIRE pattes_declarees
+
+    SI verifie_declaration(tetes_declarees, pattes_declarees, message_erreur) est FAUX
+        ECRIRE "La déclaration du fermier est INCORRECTE !"
+        ECRIRE "Raison : <message_erreur>"
+    SINON
+        ECRIRE "La déclaration du fermier est CORRECTE !"
+        
+        moutons = (pattes_declarees - (tetes_declarees * 2)) / 2
+        dindons = tetes_declarees - moutons
+        
+        APPELLE afficher_tetes_pattes(moutons, dindons)
+    FINSI
+FIN
