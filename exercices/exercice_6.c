@@ -17,11 +17,8 @@ float convertir_monnaie(float montant, int devise_depart, int devise_arrivee) {
     float taux_depart = taux_vers_euro(devise_depart);
     float taux_arrivee = taux_vers_euro(devise_arrivee);
 
-    float montant_euros;
-    float montant_final;
-
-    montant_euros = montant / taux_depart;
-    montant_final = montant_euros * taux_arrivee;
+    float montant_euros = montant / taux_depart;
+    float montant_final = montant_euros * taux_arrivee;
 
     return montant_final;
 }
