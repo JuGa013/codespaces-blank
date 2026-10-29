@@ -47,7 +47,7 @@ int main() {
 
     int promo_est_active = est_premiere_semaine_decembre();
 
-    printf("=== Saisie des articles (Entrez 0 pour terminer) ===\n\n");
+    printf("Saisie des articles (Entrez 0 pour terminer)\n\n");
 
     // Boucle de saisie des articles
     while (prix_article != 0) {
@@ -61,7 +61,7 @@ int main() {
                 && plafond_atteint == 0 
                 && montant_total > 500.0
             ) {
-                printf("--> Bravo ! Vous avez atteint le plafond pour bénéficier des 10%% de réduction !\n");
+                printf("Vous avez atteint le plafond pour bénéficier des 10%% de réduction !\n");
                 plafond_atteint = 1; 
             }
         }
