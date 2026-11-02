@@ -11,23 +11,23 @@ FINFONCTION
 FONCTION utilisateur_joue(cailloux REF)
     FAIRE 
         ECRIRE "Combien de cailloux voulez-vous retirer ?"
-        LIRE pris
-    TANTQUE pris < 1 OU pris > 3 OU pris > cailloux
+        LIRE cailloux_pris
+    TANTQUE cailloux_pris < 1 OU cailloux_pris > 3 OU cailloux_pris > cailloux
         ECRIRE "Coup invalide. Choisissez entre 1 et 3 cailloux (et pas plus qu'il n'en reste) :"
     FINTANTQUE
 
-    cailloux = cailloux - pris
+    cailloux = cailloux - cailloux_pris
 FINFONCTION
 
 FONCTION machine_joue(cailloux REF)
-    ASSIGNER pris = APPELLE ALEATOIRE(1, 3)
+    ASSIGNER cailloux_pris = APPELLE ALEATOIRE(1, 3)
     
-    SI pris > cailloux
-        pris = cailloux
+    SI cailloux_pris > cailloux
+        cailloux_pris = cailloux
     FINSI
     
-    ECRIRE "Tour de la machine. Elle retire <pris> cailloux."
-    cailloux = cailloux - pris
+    ECRIRE "Tour de la machine. Elle retire <cailloux_pris> cailloux."
+    cailloux = cailloux - cailloux_pris
 FINFONCTION
 
 DEBUT
